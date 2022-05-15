@@ -21,8 +21,8 @@ def build_car_from_body(body):
     id = str(uuid.uuid4())
     fabricante = body["fabricante"]
     modelo = body["modelo"]
-    ano = body["ano"]
-    preco = body["preco"]
+    ano = int(body["ano"])
+    preco = float(body["preco"])
     return Carro(id, fabricante, modelo, ano, preco)
 
 
@@ -31,8 +31,8 @@ def build_car_from_dynamo(item):
         id = item["id"]["S"]
         fabricante = item["fabricante"]["S"]
         modelo = item["modelo"]["S"]
-        ano = item["ano"]["S"]
-        preco = item["preco"]["S"]
+        ano = int(item["ano"]["S"])
+        preco = float(item["preco"]["S"])
         return Carro(id, fabricante, modelo, ano, preco)
 
 

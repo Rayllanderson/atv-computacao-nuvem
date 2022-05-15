@@ -1,15 +1,10 @@
 import boto3
-from utils import build_car_from_dynamo
 
 dynamodb = boto3.client('dynamodb')
 
 
 def find_all():
-    items = dynamodb.scan(TableName='carros')["Items"]
-    cars = []
-    for car in items:
-        cars.append(build_car_from_dynamo(car))
-    return cars
+    return dynamodb.scan(TableName='carros')["Items"]
 
 
 def save(carro):
